@@ -1003,10 +1003,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 608e3967db4fde745bbb7c4784cc0590, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _radius: 1
+  _radius: 5
   _tileSize: 0.5
   _quizTilesPercentage: 30
-  _tilePrefab: {fileID: 6008838703116962831, guid: e86a64a168547422db6122e2668271de,
+  _tilePrefab: {fileID: 2667218257906461933, guid: e86a64a168547422db6122e2668271de,
     type: 3}
   _patternType: 0
 --- !u!4 &297407486
@@ -1018,7 +1018,7 @@ Transform:
   m_GameObject: {fileID: 297407484}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.9744188, y: 3.3913963, z: -2.1368477}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
