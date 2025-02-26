@@ -15,6 +15,8 @@ namespace Assets.Scripts
         private Transform _playerController;
         [SerializeField]
         private Animator _playerAnimator;
+        [SerializeField]
+        private ParticleSystem _particleSystem;
 
         [SerializeField]
         private int _radius = 5;
@@ -78,6 +80,8 @@ namespace Assets.Scripts
             if (_playerCurrentPositionIndex >= _playerTargetPositionIndex)
             {
                 _isMoving = false;
+                if (_tiles[_playerCurrentPositionIndex] is EmptyTile)
+                    _particleSystem.Play();
                 return;
             }
 
