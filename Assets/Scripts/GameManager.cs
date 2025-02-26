@@ -1,6 +1,7 @@
 using Assets.Scripts.BoardGeneration;
 using Assets.Scripts.BoardGeneration.BoardPatterns;
 using Assets.Scripts.BoardGeneration.Tiles;
+using DG.Tweening;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,8 +10,11 @@ namespace Assets.Scripts
     public sealed class GameManager : MonoBehaviour
     {
         private IBoardGenerator _generator;
+
         [SerializeField]
         private Transform _playerController;
+        [SerializeField]
+        private Animator _playerAnimator;
 
         [SerializeField]
         private int _radius = 5;
@@ -29,11 +33,12 @@ namespace Assets.Scripts
         private int _playerTargetPositionIndex;
         private List<ITile> _tiles;
 
-        private float _jumpCooldown = 1;
-        private float _timer = 1;
+        private float _moveCooldown = 1;
 
         private const int MinDiceCount = 1;
         private const int MaxDiceCount = 7;
+
+        private bool _isMoving;
 
         public void GenerateBoard()
         {
@@ -54,21 +59,27 @@ namespace Assets.Scripts
             _playerController.position = _tiles[_playerCurrentPositionIndex].Position;
         }
 
-        public void MovePlayer()
+        public void PrepareMove()
         {
-            var jumpsCount = Random.Range(MinDiceCount, MaxDiceCount);
+            if (_isMoving)
+                return;
+
+            var stepsCount = Random.Range(MinDiceCount, MaxDiceCount);
+            Debug.Log(stepsCount);
             _playerTargetPositionIndex = _playerCurrentPositionIndex;
-            _playerTargetPositionIndex += jumpsCount;
+            _playerTargetPositionIndex += stepsCount;
+
+            _isMoving = true;
+            MovePlayer();
         }
 
-        private void Update()
+        private void MovePlayer()
         {
             if (_playerCurrentPositionIndex >= _playerTargetPositionIndex)
+            {
+                _isMoving = false;
                 return;
-
-            _timer += Time.deltaTime;
-            if (_timer < _jumpCooldown)
-                return;
+            }
 
             _playerCurrentPositionIndex++;
             if (_playerCurrentPositionIndex >= _tiles.Count)
@@ -77,8 +88,13 @@ namespace Assets.Scripts
                 _playerTargetPositionIndex -= _tiles.Count;
             }
 
-            _playerController.position = _tiles[_playerCurrentPositionIndex].Position;
-            _timer = 0;
+            _playerAnimator.SetTrigger("Jump");
+
+            var target = _tiles[_playerCurrentPositionIndex].Position;
+            _playerController
+                .DOMove(target, _moveCooldown)
+                .SetEase(Ease.InOutSine)
+                .onComplete = MovePlayer;
         }
     }
 }
