@@ -1,4 +1,5 @@
 using Assets.Scripts.BoardGeneration.Tiles;
+using Assets.Scripts.Extensions;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -29,6 +30,7 @@ namespace Assets.Scripts.BoardGeneration.BoardPatterns
             }
 
             return hexPositions
+                .OrderByClosestNeighbor()
                 .Select(pos => HexCoordinateToWorld(pos.x, pos.y))
                 .Select(worldPos => new TileData(worldPos, Vector3.one))
                 .ToList();

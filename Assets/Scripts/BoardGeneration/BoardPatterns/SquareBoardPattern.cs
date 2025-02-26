@@ -1,4 +1,5 @@
 using Assets.Scripts.BoardGeneration.Tiles;
+using Assets.Scripts.Extensions;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,6 +14,8 @@ namespace Assets.Scripts.BoardGeneration.BoardPatterns
         public override List<TileData> GeneratePatternData()
         {
             var tilesData = new List<TileData>();
+            var tilesPositions = new List<Vector2Int>();
+
             for (var x = 0; x < Radius; x++)
             {
                 for (var z = 0; z < Radius; z++)
@@ -20,13 +23,20 @@ namespace Assets.Scripts.BoardGeneration.BoardPatterns
                     if (x != 0 && x != Radius - 1 && z != 0 && z != Radius - 1)
                         continue;
 
-                    var spawnPosition = new Vector3(x * TileSize, 0, z * TileSize);
-
-                    var tileData = new TileData(
-                        spawnPosition,
-                        Vector3.one);
-                    tilesData.Add(tileData);
+                    tilesPositions.Add(new Vector2Int(x, z));
                 }
+            }
+
+            tilesPositions = tilesPositions.OrderByClosestNeighbor();
+
+            foreach (var tilesPosition in tilesPositions)
+            {
+                var spawnPosition = new Vector3(tilesPosition.x * TileSize, 0, tilesPosition.y * TileSize);
+
+                var tileData = new TileData(
+                    spawnPosition,
+                    Vector3.one);
+                tilesData.Add(tileData);
             }
 
             return tilesData;
