@@ -17,6 +17,8 @@ namespace Assets.Scripts
         private Animator _playerAnimator;
         [SerializeField]
         private ParticleSystem _particleSystem;
+        [SerializeField]
+        private Animator _floatingTextAnimator;
 
         [SerializeField]
         private int _radius = 5;
@@ -82,6 +84,9 @@ namespace Assets.Scripts
                 _isMoving = false;
                 if (_tiles[_playerCurrentPositionIndex] is EmptyTile)
                     _particleSystem.Play();
+
+                _floatingTextAnimator.SetTrigger("Play");
+
                 return;
             }
 
