@@ -1,9 +1,12 @@
 using Assets.Scripts.BoardGeneration;
 using Assets.Scripts.BoardGeneration.BoardPatterns;
 using Assets.Scripts.BoardGeneration.Tiles;
+using Assets.Scripts.Command;
+using Assets.Scripts.Quiz;
 using DG.Tweening;
 using System.Collections.Generic;
 using UnityEngine;
+using VContainer;
 
 namespace Assets.Scripts
 {
@@ -44,6 +47,27 @@ namespace Assets.Scripts
 
         private bool _isMoving;
 
+        [SerializeField]
+        private List<TextAsset> _quizTextAssets;
+        public List<QuizData> QuizDatas;
+
+        private ICommandDispatcher _commandDispatcher;
+
+        [Inject]
+        private void Constructor(ICommandDispatcher commandDispatcher)
+        {
+            _commandDispatcher = commandDispatcher;
+        }
+
+        private void Start()
+        {
+            foreach (var quizTextAsset in _quizTextAssets)
+            {
+                var quizData = JsonUtility.FromJson<QuizData>(quizTextAsset.ToString());
+                QuizDatas.Add(quizData);
+            }
+        }
+
         public void GenerateBoard()
         {
             _generator = new BoardGenerator(
@@ -60,7 +84,9 @@ namespace Assets.Scripts
                 tileView.SetupTile(tile);
             }
 
-            _playerController.position = _tiles[_playerCurrentPositionIndex].Position;
+            _commandDispatcher.Execute(
+                new SetInitialPlayerPositionCommand(_tiles[_playerCurrentPositionIndex].Position));
+            //_playerController.position = _tiles[_playerCurrentPositionIndex].Position;
         }
 
         public void PrepareMove()
@@ -69,6 +95,7 @@ namespace Assets.Scripts
                 return;
 
             var stepsCount = Random.Range(MinDiceCount, MaxDiceCount);
+            _commandDispatcher.Execute(new MoveCommand(stepsCount, _tiles));
             Debug.Log(stepsCount);
             _playerTargetPositionIndex = _playerCurrentPositionIndex;
             _playerTargetPositionIndex += stepsCount;
@@ -82,12 +109,13 @@ namespace Assets.Scripts
             if (_playerCurrentPositionIndex >= _playerTargetPositionIndex)
             {
                 _isMoving = false;
-                if (_tiles[_playerCurrentPositionIndex] is EmptyTile)
-                    _particleSystem.Play();
-
-                _floatingTextAnimator.SetTrigger("Play");
-
                 return;
+            }
+
+            if (_tiles[_playerCurrentPositionIndex] is EmptyTile)
+            {
+                _particleSystem.Play();
+                _floatingTextAnimator.SetTrigger("Play");
             }
 
             _playerCurrentPositionIndex++;

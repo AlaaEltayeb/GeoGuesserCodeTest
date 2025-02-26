@@ -1059,7 +1059,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 246927004}
   serializedVersion: 8
-  lengthInSec: 1
+  lengthInSec: 0.5
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
@@ -5914,7 +5914,11 @@ MonoBehaviour:
   _quizTilesPercentage: 30
   _tilePrefab: {fileID: 2667218257906461933, guid: e86a64a168547422db6122e2668271de,
     type: 3}
-  _patternType: 2
+  _patternType: 0
+  _quizTextAssets:
+  - {fileID: 4900000, guid: 66588a69ef43e4ed288f156ecfd7e532, type: 3}
+  - {fileID: 4900000, guid: 952f70ada48f2445494217015362263b, type: 3}
+  QuizDatas: []
 --- !u!4 &297407486
 Transform:
   m_ObjectHideFlags: 0
@@ -12755,6 +12759,55 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1936001072}
   m_CullTransparentMesh: 1
+--- !u!1 &1961692242
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1961692244}
+  - component: {fileID: 1961692243}
+  m_Layer: 0
+  m_Name: GameLifetimeScope
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1961692243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1961692242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb1c0df13dbf30b4d99b4e08d67f36a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentReference:
+    TypeName: 
+  autoRun: 1
+  autoInjectGameObjects:
+  - {fileID: 297407484}
+--- !u!4 &1961692244
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1961692242}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -46.395508, y: 1336.1693, z: -5.343746}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1964602097 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5517808263013071344, guid: 3e7cb15866b2044c4821d261c3bfeeb2,
@@ -12776,9 +12829,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1964602097}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff3b43202ce6f574bbaf6063c6fc0602, type: 3}
+  m_Script: {fileID: 11500000, guid: ae36f44894fbbb14bacb54958c5c18e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerAnimator: {fileID: 773190234}
+  _particleSystem: {fileID: 246927007}
+  _floatingTextAnimator: {fileID: 1255495062}
 --- !u!1 &1990987648
 GameObject:
   m_ObjectHideFlags: 0
@@ -13346,3 +13402,4 @@ SceneRoots:
   - {fileID: 977894302}
   - {fileID: 297407486}
   - {fileID: 149851781}
+  - {fileID: 1961692244}
