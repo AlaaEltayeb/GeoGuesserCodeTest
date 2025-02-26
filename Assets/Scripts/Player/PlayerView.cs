@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using VContainer;
 
-namespace Assets.Scripts
+namespace Assets.Scripts.Player
 {
     public sealed class PlayerView : MonoBehaviour
     {

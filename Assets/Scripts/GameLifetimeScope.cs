@@ -1,4 +1,5 @@
 using Assets.Scripts.Command;
+using Assets.Scripts.Player;
 using VContainer;
 using VContainer.Unity;
 
