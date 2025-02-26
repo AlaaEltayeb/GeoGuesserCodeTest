@@ -1,18 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class IBoardManager : MonoBehaviour
+namespace Assets.Scripts.BoardGeneration
 {
-    // Start is called before the first frame update
-    void Start()
+    public interface IBoardManager
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        void GenerateBoard();
     }
 }

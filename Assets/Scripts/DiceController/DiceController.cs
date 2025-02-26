@@ -1,18 +1,34 @@
-using System.Collections;
-using System.Collections.Generic;
+using Assets.Scripts.Command;
+using Assets.Scripts.Player;
 using UnityEngine;
+using VContainer;
 
-public class DiceController : MonoBehaviour
+namespace Assets.Scripts.DiceController
 {
-    // Start is called before the first frame update
-    void Start()
+    public sealed class DiceController : MonoBehaviour, IDiceController
     {
-        
-    }
+        [SerializeField]
+        private int _minDiceCount = 1;
+        [SerializeField]
+        private int _maxDiceCount = 7;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        private IPlayerState _playerState;
+        private ICommandDispatcher _commandDispatcher;
+
+        [Inject]
+        private void Constructor(IPlayerState playerState, ICommandDispatcher commandDispatcher)
+        {
+            _playerState = playerState;
+            _commandDispatcher = commandDispatcher;
+        }
+
+        public void RollDice()
+        {
+            if (_playerState.IsMoving)
+                return;
+
+            var stepsCount = Random.Range(_minDiceCount, _maxDiceCount);
+            _commandDispatcher.Execute(new MoveCommand(stepsCount));
+        }
     }
 }

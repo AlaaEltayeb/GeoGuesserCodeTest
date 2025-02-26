@@ -11,10 +11,9 @@ namespace Assets.Scripts.Command
         private readonly List<ITile> _tiles;
         private IPlayerController _playerController;
 
-        public MoveCommand(int steps, List<ITile> tiles)
+        public MoveCommand(int steps)
         {
             _steps = steps;
-            _tiles = tiles;
         }
 
         [Inject]
@@ -25,7 +24,7 @@ namespace Assets.Scripts.Command
 
         public void Execute()
         {
-            _playerController.MovePlayer(_steps, _tiles);
+            _playerController.MovePlayer(_steps);
         }
     }
 }

@@ -1,3 +1,4 @@
+using Assets.Scripts.BoardGeneration;
 using Assets.Scripts.BoardGeneration.Tiles;
 using DG.Tweening;
 using System.Collections.Generic;
@@ -22,30 +23,37 @@ namespace Assets.Scripts.Player
         private int _playerTargetPositionIndex;
 
         private float _moveCooldown = 1;
-        private int _steps;
         private List<ITile> _tiles;
 
+        private IPlayerState _playerState;
+
         [Inject]
-        private void Constructor(IPlayerController playerController)
+        private void Constructor(
+            IPlayerState playerState,
+            BoardModel boardModel,
+            IPlayerController playerController)
         {
+            _playerState = playerState;
+            _tiles = boardModel.Tiles;
             _playerController = playerController;
-            _playerController.OnPlayerInitialize += InitializePlayer;
             _playerController.OnPlayerMove += MovePlayer;
+
+            if (_tiles is null)
+                return;
+
+            transform.position = boardModel.Tiles[0].Position;
         }
 
-        public void InitializePlayer(Vector3 position)
+        private void MovePlayer(int steps)
         {
-            transform.position = position;
-        }
+            if (_playerState.IsMoving)
+                return;
 
-        private void MovePlayer(int steps, List<ITile> tiles)
-        {
-            if (_isMoving)
+            if (_tiles is null)
                 return;
 
             Debug.Log($"Moving: {steps} Steps");
-            _steps = steps;
-            _tiles = tiles;
+            _playerState.IsMoving = true;
             _playerTargetPositionIndex = _playerCurrentPositionIndex;
             _playerTargetPositionIndex += steps;
             MovePlayerAsync();
@@ -55,7 +63,7 @@ namespace Assets.Scripts.Player
         {
             if (_playerCurrentPositionIndex >= _playerTargetPositionIndex)
             {
-                _isMoving = false;
+                _playerState.IsMoving = false;
                 return;
             }
 
