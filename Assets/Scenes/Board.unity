@@ -566,7 +566,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 149851779}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.05412272, y: 0.9181111, z: -0.3687617, w: -0.1347501}
+  m_LocalRotation: {x: -0.054122716, y: 0.9181111, z: -0.36876166, w: -0.13475008}
   m_LocalPosition: {x: 0.6, y: 2, z: 2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -6011,7 +6011,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.05412272, y: 0.9181111, z: -0.3687617, w: -0.1347501}
+  m_LocalRotation: {x: -0.054122716, y: 0.9181111, z: -0.36876166, w: -0.13475008}
   m_LocalPosition: {x: 0.6, y: 2, z: 2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -9595,7 +9595,6 @@ Transform:
   m_Children:
   - {fileID: 297407486}
   - {fileID: 824760476}
-  - {fileID: 1429101534}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1201630085
@@ -10701,7 +10700,7 @@ GameObject:
   - component: {fileID: 1429101534}
   - component: {fileID: 1429101533}
   m_Layer: 0
-  m_Name: BoardManager
+  m_Name: BoardView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10738,7 +10737,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1171570624}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1458892167
 GameObject:
@@ -13516,6 +13515,7 @@ SceneRoots:
   - {fileID: 410087041}
   - {fileID: 832575519}
   - {fileID: 5152446221303807193}
+  - {fileID: 1429101534}
   - {fileID: 2018558639}
   - {fileID: 1700819953}
   - {fileID: 982783924}

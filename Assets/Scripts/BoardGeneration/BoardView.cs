@@ -1,12 +1,11 @@
 using Assets.Scripts.BoardGeneration.BoardPatterns;
 using Assets.Scripts.BoardGeneration.Tiles;
-using Assets.Scripts.Command;
 using UnityEngine;
 using VContainer;
 
 namespace Assets.Scripts.BoardGeneration
 {
-    public sealed class BoardManager : MonoBehaviour
+    public sealed class BoardView : MonoBehaviour
     {
         private IBoardGenerator _generator;
 
@@ -22,14 +21,12 @@ namespace Assets.Scripts.BoardGeneration
         [SerializeField]
         private BoardPatternType _patternType = BoardPatternType.Circular;
 
-        private ICommandDispatcher _commandDispatcher;
         private BoardModel _boardModel;
 
         [Inject]
-        private void Constructor(BoardModel boardModel, ICommandDispatcher commandDispatcher)
+        private void Constructor(BoardModel boardModel)
         {
             _boardModel = boardModel;
-            _commandDispatcher = commandDispatcher;
             GenerateBoard();
         }
 
@@ -44,13 +41,15 @@ namespace Assets.Scripts.BoardGeneration
             _boardModel.Tiles = _generator.GenerateTiles();
             foreach (var tile in _boardModel.Tiles)
             {
-                var tileView = Instantiate(_tilePrefab, tile.Position, Quaternion.identity);
+                var tileView = Instantiate(
+                    _tilePrefab,
+                    tile.Position,
+                    Quaternion.identity,
+                    transform);
+
                 tileView.transform.localScale = tile.LocalScale;
                 tileView.SetupTile(tile);
             }
-
-            _commandDispatcher.Execute(
-                new SetInitialPlayerPositionCommand(_boardModel.Tiles[0].Position));
         }
     }
 }
