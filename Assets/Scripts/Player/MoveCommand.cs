@@ -1,9 +1,9 @@
 using Assets.Scripts.BoardGeneration.Tiles;
-using Assets.Scripts.Player;
+using Assets.Scripts.Command;
 using System.Collections.Generic;
 using VContainer;
 
-namespace Assets.Scripts.Command
+namespace Assets.Scripts.Player
 {
     public class MoveCommand : ICommand
     {
