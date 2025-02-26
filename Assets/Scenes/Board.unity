@@ -5905,10 +5905,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 608e3967db4fde745bbb7c4784cc0590, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerController: {fileID: 1964602098}
-  _playerAnimator: {fileID: 773190234}
-  _particleSystem: {fileID: 246927007}
-  _floatingTextAnimator: {fileID: 1255495062}
   _radius: 5
   _tileSize: 0.5
   _quizTilesPercentage: 30
@@ -12793,6 +12789,7 @@ MonoBehaviour:
   autoRun: 1
   autoInjectGameObjects:
   - {fileID: 297407484}
+  - {fileID: 1964602097}
 --- !u!4 &1961692244
 Transform:
   m_ObjectHideFlags: 0
