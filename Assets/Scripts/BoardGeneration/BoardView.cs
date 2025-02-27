@@ -1,4 +1,3 @@
-using Assets.Scripts.BoardGeneration.BoardPatterns;
 using Assets.Scripts.BoardGeneration.Tiles;
 using UnityEngine;
 using VContainer;
@@ -7,24 +6,11 @@ namespace Assets.Scripts.BoardGeneration
 {
     public sealed class BoardView : MonoBehaviour
     {
+        private IBoardModel _boardModel;
         private IBoardGenerator _generator;
 
-        [SerializeField]
-        private TileView _tilePrefab;
-
-        [SerializeField]
-        private int _radius = 5;
-        [SerializeField]
-        private float _tileSize = 0.5f;
-        [SerializeField]
-        private float _quizTilesPercentage = 30;
-        [SerializeField]
-        private BoardPatternType _patternType = BoardPatternType.Circular;
-
-        private BoardModel _boardModel;
-
         [Inject]
-        private void Constructor(BoardModel boardModel)
+        private void Constructor(IBoardModel boardModel)
         {
             _boardModel = boardModel;
             GenerateBoard();
@@ -33,22 +19,23 @@ namespace Assets.Scripts.BoardGeneration
         private void GenerateBoard()
         {
             _generator = new BoardGenerator(
-                _radius,
-                _tileSize,
-                _quizTilesPercentage,
-                _patternType);
+                _boardModel.Size,
+                IBoardModel.TileSize,
+                _boardModel.QuizTilesPercentage,
+                _boardModel.PatternType);
 
             _boardModel.Tiles = _generator.GenerateTiles();
+
             foreach (var tile in _boardModel.Tiles)
             {
                 var tileView = Instantiate(
-                    _tilePrefab,
+                    _boardModel.TilePrefab,
                     tile.Position,
                     Quaternion.identity,
                     transform);
 
                 tileView.transform.localScale = tile.LocalScale;
-                tileView.SetupTile(tile);
+                tileView.GetComponent<TileView>().SetupTile(tile);
             }
         }
     }

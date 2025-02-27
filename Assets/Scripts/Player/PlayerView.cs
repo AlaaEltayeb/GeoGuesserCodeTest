@@ -33,7 +33,7 @@ namespace Assets.Scripts.Player
         [Inject]
         private void Constructor(
             IPlayerState playerState,
-            BoardModel boardModel,
+            IBoardModel boardModel,
             IPlayerController playerController,
             ICommandDispatcher commandDispatcher)
         {

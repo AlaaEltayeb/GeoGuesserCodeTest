@@ -2,8 +2,8 @@ namespace Assets.Scripts.BoardGeneration.BoardPatterns
 {
     public enum BoardPatternType
     {
-        Circular,
-        Hexagonal,
-        Square,
+        Circular = 0,
+        Hexagonal = 1,
+        Square = 2,
     }
 }
