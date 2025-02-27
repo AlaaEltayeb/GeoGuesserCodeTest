@@ -21,9 +21,8 @@ namespace Assets.Scripts
             builder.Register<ICommandFactory, CommandFactory>(Lifetime.Singleton);
             builder.Register<ICommandDispatcher, CommandDispatcher>(Lifetime.Singleton);
             builder.Register<IPlayerController, PlayerController>(Lifetime.Singleton);
-            builder.Register<IMiniGameManager, MiniGameManager>(Lifetime.Singleton);
-            builder.Register<IPlayerState, PlayerState>(Lifetime.Singleton);
             builder.Register<IMiniGameModel, MiniGamesModel>(Lifetime.Singleton);
+            builder.Register<IMiniGameManager, MiniGameManager>(Lifetime.Singleton);
         }
     }
 }

@@ -7994,52 +7994,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 824524838}
   m_CullTransparentMesh: 1
---- !u!1 &824760474
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 824760476}
-  - component: {fileID: 824760475}
-  m_Layer: 0
-  m_Name: DiceController
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &824760475
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 824760474}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff0ab320781ca3e4685ea04eda4518dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _minDiceCount: 1
-  _maxDiceCount: 7
---- !u!4 &824760476
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 824760474}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1171570624}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &828038552
 GameObject:
   m_ObjectHideFlags: 0
@@ -9677,8 +9631,9 @@ GameObject:
   - component: {fileID: 1133933757}
   - component: {fileID: 1133933756}
   - component: {fileID: 1133933758}
+  - component: {fileID: 1133933759}
   m_Layer: 5
-  m_Name: button_base_grp
+  m_Name: DiceRollView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9785,19 +9740,22 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1133933756}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 824760475}
-        m_TargetAssemblyTypeName: Assets.Scripts.DiceController.DiceController, Assembly-CSharp
-        m_MethodName: RollDice
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
+--- !u!114 &1133933759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1133933754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff0ab320781ca3e4685ea04eda4518dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _minDiceCount: 1
+  _maxDiceCount: 7
+  _rollDiceButton: {fileID: 1133933758}
 --- !u!1 &1147210215
 GameObject:
   m_ObjectHideFlags: 0
@@ -10322,7 +10280,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 297407486}
-  - {fileID: 824760476}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1201630085
@@ -14240,7 +14197,7 @@ MonoBehaviour:
   autoInjectGameObjects:
   - {fileID: 1429101532}
   - {fileID: 297407484}
-  - {fileID: 824760474}
+  - {fileID: 1133933754}
   - {fileID: 1964602097}
   - {fileID: 273698133}
 --- !u!1 &1964602097 stripped
