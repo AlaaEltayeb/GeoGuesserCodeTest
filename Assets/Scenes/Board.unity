@@ -11677,7 +11677,7 @@ MonoBehaviour:
     type: 3}
   _radius: 1
   _tileSize: 0.5
-  _quizTilesPercentage: 90
+  _quizTilesPercentage: 30
   _patternType: 0
 --- !u!4 &1429101534
 Transform:
