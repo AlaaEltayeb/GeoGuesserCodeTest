@@ -22,9 +22,9 @@ namespace Assets.Scripts.MiniGame
 
         private void ShowSelectedMiniGame(int selectedMiniGameType)
         {
-            _miniGames[selectedMiniGameType].SetActive(true);
-
-            var quizViews = _miniGames.Select(miniGame => miniGame.GetComponent<QuizViewBase>()).ToList();
+            var quizViews = _miniGames
+                .Select(miniGame => miniGame.GetComponent<QuizViewBase>())
+                .ToList();
 
             var selectedMiniGame = quizViews
                 .FirstOrDefault(miniGame => (int)miniGame.QuizType == selectedMiniGameType);
@@ -34,16 +34,15 @@ namespace Assets.Scripts.MiniGame
 
         private void ShowMiniGameResult(int score, QuizData quizData, bool succeeded)
         {
-            //_miniGames[selectedMiniGameType].SetActive(true);
+            var quizResultsViews = _miniGameResult
+                .Select(miniGame => miniGame.GetComponent<QuizResultViewBase>())
+                .ToList();
 
-            //var quizViews = _miniGames.Select(miniGame => miniGame.GetComponent<QuizViewBase>()).ToList();
+            var selectedMiniGameResult = quizResultsViews
+                .FirstOrDefault(miniGame => (int)miniGame.QuizType == quizData.QuestionType);
 
-            //var selectedMiniGame = quizViews
-            //    .FirstOrDefault(miniGame => (int)miniGame.QuizType == selectedMiniGameType);
-
-            //selectedMiniGame!.Populate();
-
-            _miniGameResult[quizData.QuestionType].SetActive(true);
+            selectedMiniGameResult!.Populate(score, quizData, succeeded);
+            selectedMiniGameResult.gameObject.SetActive(true);
         }
     }
 }

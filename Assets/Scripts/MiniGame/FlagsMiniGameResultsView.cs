@@ -1,18 +1,29 @@
-using TMPro;
+using Assets.Scripts.Quiz;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
 
 namespace Assets.Scripts.MiniGame
 {
-    public class FlagsMiniGameResultsView : MonoBehaviour
+    public sealed class FlagsMiniGameResultsView : QuizResultViewBase
     {
-        [SerializeField]
-        private TextMeshProUGUI _resultText;
+        public override void Populate(int score, QuizData quizData, bool succeeded)
+        {
+            ResultText.text = succeeded ? SucceedMessage : FailedMessage;
+            CorrectAnswerText.text = quizData.Question;
+            ScoreText.text = score.ToString();
+            ScoreText.text = succeeded ? score.ToString() : "0";
 
-        [SerializeField]
-        private TextMeshProUGUI _correctAnswerText;
+            var imageId = quizData.Answers[quizData.CorrectAnswerIndex].ImageID;
+            Addressables
+                .LoadAssetAsync<Sprite>(imageId)
+                .Completed += OnIconLoaded;
+        }
 
-        [SerializeField]
-        private Image _questionImage;
+        private void OnIconLoaded(AsyncOperationHandle<Sprite> handle)
+        {
+            QuestionImage.sprite = handle.Result;
+            Addressables.Release(handle);
+        }
     }
 }
