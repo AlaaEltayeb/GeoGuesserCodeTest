@@ -33,12 +33,16 @@ namespace Assets.Scripts.UI
         {
             var data = JsonUtility.FromJson<QuizData>(handle.Result.text);
             TextQuizzes.Add(data);
+
+            Addressables.Release(handle);
         }
 
         private void OnFlagsTextAssetLoaded(AsyncOperationHandle<TextAsset> handle)
         {
             var data = JsonUtility.FromJson<QuizData>(handle.Result.text);
             FlagsQuizzes.Add(data);
+
+            Addressables.Release(handle);
         }
     }
 }

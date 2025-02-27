@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
+using UnityEngine.ResourceManagement.ResourceLocations;
 using UnityEngine.UI;
 using VContainer;
 
@@ -20,12 +23,13 @@ namespace Assets.Scripts.UI
         [SerializeField]
         private GameObject _result;
 
-        private string _correctAnswer;
         private int _correctAnswerIndex;
 
         private QuizData _quizData;
 
         private IMiniGameModel _miniGameModel;
+
+        private const string AssetLabel = "Flags";
 
         [Inject]
         private void Constructor(IMiniGameModel miniGameModel)
@@ -43,17 +47,40 @@ namespace Assets.Scripts.UI
 
         private void Populate()
         {
-            var flags = _quizData.Answers.Select(answer => answer.ImageID).ToList();
-            _correctAnswer = flags[_quizData.CorrectAnswerIndex];
-            flags.Shuffle();
-            _correctAnswerIndex = flags.IndexOf(_correctAnswer);
+            Addressables.LoadResourceLocationsAsync(AssetLabel, typeof(Sprite)).Completed
+                += OnResourceLocationsLoaded;
+        }
 
-            for (var i = 0; i < flags.Count; i++)
+        private void OnResourceLocationsLoaded(AsyncOperationHandle<IList<IResourceLocation>> handle)
+        {
+            Addressables
+                .LoadAssetsAsync<Sprite>(
+                    handle.Result,
+                    null)
+                .Completed += OnFlagSpriteLoaded;
+
+            Addressables.Release(handle);
+        }
+
+        private void OnFlagSpriteLoaded(AsyncOperationHandle<IList<Sprite>> handle)
+        {
+            var flags = _quizData.Answers.Select(answer => answer.ImageID).ToList();
+            var correctAnswer = flags[_quizData.CorrectAnswerIndex];
+
+            var sprites = handle.Result.ToList();
+            sprites.Shuffle();
+
+            var sprite = sprites.FirstOrDefault(sprite => sprite.name == correctAnswer);
+            _correctAnswerIndex = sprites.IndexOf(sprite);
+
+            for (var i = 0; i < sprites.Count; i++)
             {
-                _flags[i].sprite = Resources.Load<Sprite>(flags[i]);
+                _flags[i].sprite = sprites[i];
             }
 
             _question.text = _quizData.Question;
+
+            Addressables.Release(handle);
         }
 
         public void SelectAnswer(int answer)

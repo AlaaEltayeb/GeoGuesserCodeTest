@@ -20,25 +20,40 @@ MonoBehaviour:
   - m_GUID: aa7afeb4cdb604109a8aa4c8e19c5207
     m_Address: ca
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - Flags
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: f01b1383a489f473380152fa57a2626b
     m_Address: ie
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - Flags
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a20353a09c0104257b308f5ae55c9f66
     m_Address: loc_berlin
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - Cities
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c840c90675e444fed9551f13fec3d49f
     m_Address: nz
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - Flags
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: f75ef7a79354a4bca9e8b6f856f82a8d
     m_Address: us
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Flags
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 66588a69ef43e4ed288f156ecfd7e532
+    m_Address: FlagQuizData
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 952f70ada48f2445494217015362263b
+    m_Address: TextQuizData
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

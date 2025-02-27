@@ -15,7 +15,7 @@ MonoBehaviour:
   m_DefaultGroup: b4f7cdf5c4c706a48bcbba81e4ccfd40
   m_currentHash:
     serializedVersion: 2
-    Hash: 00000000000000000000000000000000
+    Hash: fb82e802bae4d95bed4b3fc6269923bd
   m_OptimizeCatalogSize: 0
   m_BuildRemoteCatalog: 0
   m_BundleLocalCatalog: 0
@@ -87,6 +87,8 @@ MonoBehaviour:
   m_LabelTable:
     m_LabelNames:
     - default
+    - Flags
+    - Cities
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: d4a8fb880db18f04e88e9f73fd442107, type: 2}

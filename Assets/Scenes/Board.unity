@@ -6090,9 +6090,6 @@ MonoBehaviour:
   _miniGames:
   - {fileID: 1364674502}
   - {fileID: 982783920}
-  _textAssets:
-  - {fileID: 4900000, guid: 66588a69ef43e4ed288f156ecfd7e532, type: 3}
-  - {fileID: 4900000, guid: 952f70ada48f2445494217015362263b, type: 3}
 --- !u!1 &277999528
 GameObject:
   m_ObjectHideFlags: 0

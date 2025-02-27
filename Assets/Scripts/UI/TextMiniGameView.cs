@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.UI;
 using VContainer;
 
@@ -55,7 +57,15 @@ namespace Assets.Scripts.UI
             }
 
             _question.text = _quizData.Question;
-            _place.sprite = Resources.Load<Sprite>(_quizData.CustomImageID);
+            Addressables
+                .LoadAssetAsync<Sprite>(_quizData.CustomImageID)
+                .Completed += OnIconLoaded;
+        }
+
+        private void OnIconLoaded(AsyncOperationHandle<Sprite> handle)
+        {
+            _place.sprite = handle.Result;
+            Addressables.Release(handle);
         }
 
         public void SelectAnswer(int answer)
