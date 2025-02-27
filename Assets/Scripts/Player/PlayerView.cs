@@ -57,7 +57,6 @@ namespace Assets.Scripts.Player
             if (_tiles is null)
                 return;
 
-            Debug.Log($"Moving: {steps} Steps");
             _playerState.IsMoving = true;
             _playerTargetPositionIndex = _playerCurrentPositionIndex;
             _playerTargetPositionIndex += steps;
@@ -77,12 +76,6 @@ namespace Assets.Scripts.Player
                 return;
             }
 
-            if (_tiles[_playerCurrentPositionIndex] is EmptyTile)
-            {
-                _particleSystem.Play();
-                _floatingTextAnimator.SetTrigger("Play");
-            }
-
             _playerCurrentPositionIndex++;
             if (_playerCurrentPositionIndex >= _tiles.Count)
             {
@@ -96,7 +89,18 @@ namespace Assets.Scripts.Player
             transform
                 .DOMove(target, _moveCooldown)
                 .SetEase(Ease.InOutSine)
-                .onComplete = MovePlayerAsync;
+                .onComplete = OnAnimationCompleted;
+        }
+
+        private void OnAnimationCompleted()
+        {
+            if (_tiles[_playerCurrentPositionIndex] is EmptyTile)
+            {
+                _particleSystem.Play();
+                _floatingTextAnimator.SetTrigger("Play");
+            }
+
+            MovePlayerAsync();
         }
     }
 }
