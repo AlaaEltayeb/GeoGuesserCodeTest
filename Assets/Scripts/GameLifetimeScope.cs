@@ -1,8 +1,8 @@
 using Assets.Scripts.BoardGeneration;
 using Assets.Scripts.Command;
+using Assets.Scripts.MiniGame;
 using Assets.Scripts.Player;
 using Assets.Scripts.Score;
-using Assets.Scripts.UI;
 using VContainer;
 using VContainer.Unity;
 

@@ -10,7 +10,7 @@ using UnityEngine.ResourceManagement.ResourceLocations;
 using UnityEngine.UI;
 using VContainer;
 
-namespace Assets.Scripts.UI
+namespace Assets.Scripts.MiniGame
 {
     public sealed class FlagsMiniGameView : MonoBehaviour
     {

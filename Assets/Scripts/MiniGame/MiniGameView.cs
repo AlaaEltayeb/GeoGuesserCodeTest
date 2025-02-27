@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using VContainer;
 
-namespace Assets.Scripts.UI
+namespace Assets.Scripts.MiniGame
 {
     public sealed class MiniGameView : MonoBehaviour
     {

@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-namespace Assets.Scripts.UI
+namespace Assets.Scripts.MiniGame
 {
     public sealed class TextMiniGameResultsView : MonoBehaviour
     {

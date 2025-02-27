@@ -2,7 +2,7 @@ using Assets.Scripts.Quiz;
 using System;
 using Random = UnityEngine.Random;
 
-namespace Assets.Scripts.UI
+namespace Assets.Scripts.MiniGame
 {
     public sealed class MiniGameManager : IMiniGameManager
     {

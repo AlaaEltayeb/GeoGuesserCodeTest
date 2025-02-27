@@ -1,5 +1,5 @@
 using Assets.Scripts.Command;
-using Assets.Scripts.UI;
+using Assets.Scripts.MiniGame;
 using VContainer;
 
 namespace Assets.Scripts.Quiz

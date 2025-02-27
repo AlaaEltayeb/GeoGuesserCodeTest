@@ -1,7 +1,7 @@
 using Assets.Scripts.Quiz;
 using System.Collections.Generic;
 
-namespace Assets.Scripts.UI
+namespace Assets.Scripts.MiniGame
 {
     public interface IMiniGameModel
     {

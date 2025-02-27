@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets.Scripts.UI
+namespace Assets.Scripts.MiniGame
 {
     public class FlagsMiniGameResultsView : MonoBehaviour
     {

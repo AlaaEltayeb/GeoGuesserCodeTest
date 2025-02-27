@@ -9,7 +9,7 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.UI;
 using VContainer;
 
-namespace Assets.Scripts.UI
+namespace Assets.Scripts.MiniGame
 {
     public sealed class TextMiniGameView : MonoBehaviour
     {

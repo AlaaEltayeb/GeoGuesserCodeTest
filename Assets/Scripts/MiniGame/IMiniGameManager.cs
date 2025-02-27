@@ -1,6 +1,6 @@
 using System;
 
-namespace Assets.Scripts.UI
+namespace Assets.Scripts.MiniGame
 {
     public interface IMiniGameManager
     {
