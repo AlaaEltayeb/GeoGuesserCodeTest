@@ -9,11 +9,12 @@ using VContainer;
 
 namespace Assets.Scripts.UI
 {
-    public sealed class FlagsMiniGameView : MonoBehaviour
+    public sealed class TextMiniGameView : MonoBehaviour
     {
         [SerializeField]
-        private List<Image> _flags;
-
+        private List<TextMeshProUGUI> _answers;
+        [SerializeField]
+        private Image _place;
         [SerializeField]
         private TextMeshProUGUI _question;
 
@@ -35,25 +36,26 @@ namespace Assets.Scripts.UI
 
         private void OnEnable()
         {
-            var selectedQuiz = Random.Range(0, _miniGameModel.FlagsQuizzes.Count);
-            _quizData = _miniGameModel.FlagsQuizzes[selectedQuiz];
+            var selectedQuiz = Random.Range(0, _miniGameModel.TextQuizzes.Count);
+            _quizData = _miniGameModel.TextQuizzes[selectedQuiz];
 
             Populate();
         }
 
         private void Populate()
         {
-            var flags = _quizData.Answers.Select(answer => answer.ImageID).ToList();
-            _correctAnswer = flags[_quizData.CorrectAnswerIndex];
-            flags.Shuffle();
-            _correctAnswerIndex = flags.IndexOf(_correctAnswer);
+            var answers = _quizData.Answers.Select(answer => answer.Text).ToList();
+            _correctAnswer = answers[_quizData.CorrectAnswerIndex];
+            answers.Shuffle();
+            _correctAnswerIndex = answers.IndexOf(_correctAnswer);
 
-            for (var i = 0; i < flags.Count; i++)
+            for (var i = 0; i < answers.Count; i++)
             {
-                _flags[i].sprite = Resources.Load<Sprite>(flags[i]);
+                _answers[i].text = answers[i];
             }
 
             _question.text = _quizData.Question;
+            _place.sprite = Resources.Load<Sprite>(_quizData.CustomImageID);
         }
 
         public void SelectAnswer(int answer)
