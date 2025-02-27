@@ -23,7 +23,6 @@ namespace Assets.Scripts.UI
         [SerializeField]
         private GameObject _result;
 
-        private string _correctAnswer;
         private int _correctAnswerIndex;
 
         private QuizData _quizData;
@@ -47,9 +46,9 @@ namespace Assets.Scripts.UI
         private void Populate()
         {
             var answers = _quizData.Answers.Select(answer => answer.Text).ToList();
-            _correctAnswer = answers[_quizData.CorrectAnswerIndex];
+            var correctAnswer = answers[_quizData.CorrectAnswerIndex];
             answers.Shuffle();
-            _correctAnswerIndex = answers.IndexOf(_correctAnswer);
+            _correctAnswerIndex = answers.IndexOf(correctAnswer);
 
             for (var i = 0; i < answers.Count; i++)
             {
