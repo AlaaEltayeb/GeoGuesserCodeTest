@@ -11,5 +11,6 @@ namespace Assets.Scripts.Quiz
         public string Question;
         public string CustomImageID;
         public List<Answer> Answers;
+        public int CorrectAnswerIndex;
     }
 }

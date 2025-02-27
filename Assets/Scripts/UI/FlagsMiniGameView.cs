@@ -1,0 +1,45 @@
+using Assets.Scripts.Extensions;
+using Assets.Scripts.Quiz;
+using System.Collections.Generic;
+using System.Linq;
+using TMPro;
+using UnityEngine;
+using UnityEngine.UI;
+
+namespace Assets.Scripts.UI
+{
+    public sealed class FlagsMiniGameView : MonoBehaviour
+    {
+        [SerializeField]
+        private List<Image> _flags;
+
+        [SerializeField]
+        private TextMeshProUGUI _question;
+
+        private string _correctAnswer;
+        private int _correctAnswerIndex;
+
+        private QuizData _quizData;
+
+        private void Start()
+        {
+            var flags = _quizData.Answers.Select(answer => answer.ImageID).ToList();
+            _correctAnswer = flags[_quizData.CorrectAnswerIndex];
+            flags.Shuffle();
+            _correctAnswerIndex = flags.IndexOf(_correctAnswer);
+
+            for (var i = 0; i < flags.Count; i++)
+            {
+                _flags[i].sprite = Resources.Load<Sprite>(flags[i]);
+            }
+
+            _question.text = _quizData.Question;
+        }
+
+        public void SelectAnswer(int answer)
+        {
+            if (_correctAnswerIndex == answer)
+                Debug.Log("Good Job");
+        }
+    }
+}
