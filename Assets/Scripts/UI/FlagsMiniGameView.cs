@@ -5,6 +5,7 @@ using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using VContainer;
 
 namespace Assets.Scripts.UI
 {
@@ -21,7 +22,21 @@ namespace Assets.Scripts.UI
 
         private QuizData _quizData;
 
-        private void Start()
+        private IMiniGameModel _miniGameModel;
+
+        [Inject]
+        private void Constructor(IMiniGameModel miniGameModel)
+        {
+            _miniGameModel = miniGameModel;
+        }
+
+        private void OnEnable()
+        {
+            _quizData = _miniGameModel.FlagsQuizzes[0];
+            Populate();
+        }
+
+        private void Populate()
         {
             var flags = _quizData.Answers.Select(answer => answer.ImageID).ToList();
             _correctAnswer = flags[_quizData.CorrectAnswerIndex];

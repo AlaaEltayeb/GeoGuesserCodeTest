@@ -7,7 +7,7 @@ namespace Assets.Scripts.Quiz
     public struct QuizData
     {
         public string ID;
-        public string QuestionType;
+        public int QuestionType;
         public string Question;
         public string CustomImageID;
         public List<Answer> Answers;

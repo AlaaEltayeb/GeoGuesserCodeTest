@@ -13,7 +13,7 @@ namespace Assets.Scripts.UI
             var quizTypesCount = Enum.GetNames(typeof(QuizType)).Length;
             var selectedQuiz = Random.Range(0, quizTypesCount);
 
-            OnShowMiniGame?.Invoke(selectedQuiz);
+            OnShowMiniGame?.Invoke(1);
         }
     }
 }

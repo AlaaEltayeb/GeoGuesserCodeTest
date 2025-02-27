@@ -1,5 +1,7 @@
 using Assets.Scripts.BoardGeneration;
 using Assets.Scripts.BoardGeneration.Tiles;
+using Assets.Scripts.Command;
+using Assets.Scripts.Quiz;
 using DG.Tweening;
 using System.Collections.Generic;
 using UnityEngine;
@@ -26,16 +28,19 @@ namespace Assets.Scripts.Player
         private List<ITile> _tiles;
 
         private IPlayerState _playerState;
+        private ICommandDispatcher _commandDispatcher;
 
         [Inject]
         private void Constructor(
             IPlayerState playerState,
             BoardModel boardModel,
-            IPlayerController playerController)
+            IPlayerController playerController,
+            ICommandDispatcher commandDispatcher)
         {
             _playerState = playerState;
             _tiles = boardModel.Tiles;
             _playerController = playerController;
+            _commandDispatcher = commandDispatcher;
             _playerController.OnPlayerMove += MovePlayer;
 
             if (_tiles is null)
@@ -64,6 +69,11 @@ namespace Assets.Scripts.Player
             if (_playerCurrentPositionIndex >= _playerTargetPositionIndex)
             {
                 _playerState.IsMoving = false;
+                if (_tiles[_playerCurrentPositionIndex] is QuizTile)
+                {
+                    _commandDispatcher.Execute(new ShowQuizCommand());
+                }
+
                 return;
             }
 

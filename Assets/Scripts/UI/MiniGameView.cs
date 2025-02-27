@@ -9,9 +9,13 @@ namespace Assets.Scripts.UI
         [SerializeField]
         private List<GameObject> _miniGames;
 
+        [SerializeField]
+        private List<TextAsset> _textAssets;
+
         [Inject]
-        private void Constructor(IMiniGameManager miniGameManager)
+        private void Constructor(IMiniGameModel miniGameModel, IMiniGameManager miniGameManager)
         {
+            miniGameModel.GenerateQuizzes(_textAssets);
             miniGameManager.OnShowMiniGame += ShowSelectedMiniGame;
         }
 

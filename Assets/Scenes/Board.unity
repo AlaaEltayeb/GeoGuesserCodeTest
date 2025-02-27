@@ -566,7 +566,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 149851779}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.054122716, y: 0.9181111, z: -0.36876166, w: -0.13475008}
+  m_LocalRotation: {x: -0.05412272, y: 0.9181111, z: -0.3687617, w: -0.1347501}
   m_LocalPosition: {x: 0.6, y: 2, z: 2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5823,6 +5823,9 @@ MonoBehaviour:
   _miniGames:
   - {fileID: 1364674502}
   - {fileID: 982783920}
+  _textAssets:
+  - {fileID: 4900000, guid: 66588a69ef43e4ed288f156ecfd7e532, type: 3}
+  - {fileID: 4900000, guid: 952f70ada48f2445494217015362263b, type: 3}
 --- !u!1 &277999528
 GameObject:
   m_ObjectHideFlags: 0
@@ -5954,10 +5957,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 608e3967db4fde745bbb7c4784cc0590, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _quizTextAssets:
-  - {fileID: 4900000, guid: 66588a69ef43e4ed288f156ecfd7e532, type: 3}
-  - {fileID: 4900000, guid: 952f70ada48f2445494217015362263b, type: 3}
-  QuizDatas: []
 --- !u!4 &297407486
 Transform:
   m_ObjectHideFlags: 0
@@ -6060,7 +6059,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.054122716, y: 0.9181111, z: -0.36876166, w: -0.13475008}
+  m_LocalRotation: {x: -0.05412272, y: 0.9181111, z: -0.3687617, w: -0.1347501}
   m_LocalPosition: {x: 0.6, y: 2, z: 2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -6336,7 +6335,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 0.000030517578, y: 4.400055}
+  m_AnchoredPosition: {x: 0.000030517578, y: 71}
   m_SizeDelta: {x: 0, y: 115.154}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &398641679
@@ -6359,7 +6358,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Which flag belongs to
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -6903,7 +6902,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Sweden?
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -6930,7 +6929,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 103.05
+  m_fontSize: 108
   m_fontSizeBase: 108.7
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -10788,9 +10787,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tilePrefab: {fileID: 2667218257906461933, guid: e86a64a168547422db6122e2668271de,
     type: 3}
-  _radius: 5
+  _radius: 1
   _tileSize: 0.5
-  _quizTilesPercentage: 30
+  _quizTilesPercentage: 90
   _patternType: 0
 --- !u!4 &1429101534
 Transform:
