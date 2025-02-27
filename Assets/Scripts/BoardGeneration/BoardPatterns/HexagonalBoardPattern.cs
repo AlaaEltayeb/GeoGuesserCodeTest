@@ -12,7 +12,7 @@ namespace Assets.Scripts.BoardGeneration.BoardPatterns
         {
         }
 
-        public override List<TileData> GeneratePatternData()
+        public override List<TileData> GenerateTilesData()
         {
             var hexPositions = new List<Vector2Int>();
 

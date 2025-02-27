@@ -8,6 +8,6 @@ namespace Assets.Scripts.BoardGeneration.BoardPatterns
         int Radius { get; }
         float TileSize { get; }
 
-        List<TileData> GeneratePatternData();
+        List<TileData> GenerateTilesData();
     }
 }

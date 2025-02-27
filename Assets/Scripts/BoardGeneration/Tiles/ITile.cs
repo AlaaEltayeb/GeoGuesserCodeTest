@@ -1,12 +1,9 @@
-using UnityEngine;
-
 namespace Assets.Scripts.BoardGeneration.Tiles
 {
     public interface ITile
     {
-        Vector3 Position { get; }
-        Vector3 LocalScale { get; }
+        TileData TileData { get; }
 
-        void SetTileData(Vector3 position, Vector3 localScale);
+        void SetTileData(TileData tileData);
     }
 }

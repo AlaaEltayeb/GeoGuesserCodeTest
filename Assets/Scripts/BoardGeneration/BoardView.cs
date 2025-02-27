@@ -30,11 +30,11 @@ namespace Assets.Scripts.BoardGeneration
             {
                 var tileView = Instantiate(
                     _boardModel.TilePrefab,
-                    tile.Position,
+                    tile.TileData.Position,
                     Quaternion.identity,
                     transform);
 
-                tileView.transform.localScale = tile.LocalScale;
+                tileView.transform.localScale = tile.TileData.LocalScale;
                 tileView.GetComponent<TileView>().SetupTile(tile);
             }
         }

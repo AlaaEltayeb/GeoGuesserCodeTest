@@ -11,7 +11,7 @@ namespace Assets.Scripts.BoardGeneration.BoardPatterns
         {
         }
 
-        public override List<TileData> GeneratePatternData()
+        public override List<TileData> GenerateTilesData()
         {
             var tilesData = new List<TileData>();
             var tilesPositions = new List<Vector2Int>();

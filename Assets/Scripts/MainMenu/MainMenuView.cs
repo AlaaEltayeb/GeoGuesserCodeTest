@@ -1,7 +1,4 @@
-using Assets.Scripts.BoardGeneration;
 using Assets.Scripts.BoardGeneration.BoardPatterns;
-using Assets.Scripts.Command;
-using Assets.Scripts.SceneLoading;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -20,14 +17,12 @@ namespace Assets.Scripts.MainMenu
         [SerializeField]
         private Button _startButton;
 
-        private IBoardModel _boardModel;
-        private ICommandDispatcher _commandDispatcher;
+        private IMainMenuViewModel _mainMenuViewModel;
 
         [Inject]
-        private void Constructor(IBoardModel boardModel, ICommandDispatcher commandDispatcher)
+        private void Constructor(IMainMenuViewModel mainMenuViewModel)
         {
-            _boardModel = boardModel;
-            _commandDispatcher = commandDispatcher;
+            _mainMenuViewModel = mainMenuViewModel;
         }
 
         private void Start()
@@ -37,15 +32,14 @@ namespace Assets.Scripts.MainMenu
 
         private void StartGame()
         {
-            if (int.TryParse(_sizeInputField.text, out var size))
-                _boardModel.Size = size;
+            int.TryParse(_sizeInputField.text, out var size);
+            int.TryParse(_quizTilesPercentageInputField.text, out var quizTilesPercentage);
+            var patternType = (BoardPatternType)_boardPatternDropDown.value;
 
-            if (int.TryParse(_quizTilesPercentageInputField.text, out var quizTilesPercentage))
-                _boardModel.QuizTilesPercentage = quizTilesPercentage;
-
-            _boardModel.PatternType = (BoardPatternType)_boardPatternDropDown.value;
-
-            _commandDispatcher.Execute(new LoadSceneCommand(SceneType.Board));
+            _mainMenuViewModel.OnStart(
+                size,
+                quizTilesPercentage,
+                patternType);
         }
     }
 }

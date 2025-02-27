@@ -14,6 +14,6 @@ namespace Assets.Scripts.BoardGeneration.BoardPatterns
             TileSize = tileSize;
         }
 
-        public abstract List<TileData> GeneratePatternData();
+        public abstract List<TileData> GenerateTilesData();
     }
 }

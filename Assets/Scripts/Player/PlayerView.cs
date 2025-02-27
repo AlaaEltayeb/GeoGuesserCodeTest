@@ -46,7 +46,7 @@ namespace Assets.Scripts.Player
             if (_tiles is null)
                 return;
 
-            transform.position = boardModel.Tiles[0].Position;
+            transform.position = boardModel.Tiles[0].TileData.Position;
         }
 
         private void MovePlayer(int steps)
@@ -85,7 +85,7 @@ namespace Assets.Scripts.Player
 
             _playerAnimator.SetTrigger("Jump");
 
-            var target = _tiles[_playerCurrentPositionIndex].Position;
+            var target = _tiles[_playerCurrentPositionIndex].TileData.Position;
             transform
                 .DOMove(target, _moveCooldown)
                 .SetEase(Ease.InOutSine)

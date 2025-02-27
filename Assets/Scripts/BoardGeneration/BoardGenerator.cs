@@ -42,7 +42,7 @@ namespace Assets.Scripts.BoardGeneration
         public List<ITile> GenerateTiles()
         {
             var tiles = new List<ITile>();
-            var patternData = _boardPattern.GeneratePatternData();
+            var patternData = _boardPattern.GenerateTilesData();
 
             var tilesCount = patternData.Count;
 
@@ -69,10 +69,7 @@ namespace Assets.Scripts.BoardGeneration
 
             for (var i = 0; i < tiles.Count; i++)
             {
-                tiles[i]
-                    .SetTileData(
-                        patternData[i].Position,
-                        patternData[i].LocalScale);
+                tiles[i].SetTileData(patternData[i]);
             }
 
             return tiles;
