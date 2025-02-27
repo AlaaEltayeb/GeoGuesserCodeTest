@@ -833,7 +833,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 149851779}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.054122735, y: 0.9181111, z: -0.3687617, w: -0.13475013}
+  m_LocalRotation: {x: -0.054122716, y: 0.9181111, z: -0.36876166, w: -0.13475008}
   m_LocalPosition: {x: 0.6, y: 2, z: 2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -6090,6 +6090,9 @@ MonoBehaviour:
   _miniGames:
   - {fileID: 1364674502}
   - {fileID: 982783920}
+  _miniGameResult:
+  - {fileID: 1211823901}
+  - {fileID: 277999528}
 --- !u!1 &277999528
 GameObject:
   m_ObjectHideFlags: 0
@@ -6339,7 +6342,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.054122735, y: 0.9181111, z: -0.3687617, w: -0.13475013}
+  m_LocalRotation: {x: -0.054122716, y: 0.9181111, z: -0.36876166, w: -0.13475008}
   m_LocalPosition: {x: 0.6, y: 2, z: 2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -9078,7 +9081,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Question>k__BackingField: {fileID: 398641679}
   <QuizType>k__BackingField: 1
-  <Result>k__BackingField: {fileID: 277999528}
   <Panel>k__BackingField: {fileID: 49409264}
   _flags:
   - {fileID: 1535803240}
@@ -11550,7 +11552,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Question>k__BackingField: {fileID: 2060842372}
   <QuizType>k__BackingField: 0
-  <Result>k__BackingField: {fileID: 1211823901}
   <Panel>k__BackingField: {fileID: 922107428}
   _answers:
   - {fileID: 1918112415}

@@ -57,14 +57,5 @@ namespace Assets.Scripts.MiniGame
             Panel.SetActive(true);
             Addressables.Release(handle);
         }
-
-        public void SelectAnswer(int answer)
-        {
-            if (CorrectAnswerIndex == answer)
-                Debug.Log("Good Job");
-
-            Panel.SetActive(false);
-            Result.SetActive(true);
-        }
     }
 }
