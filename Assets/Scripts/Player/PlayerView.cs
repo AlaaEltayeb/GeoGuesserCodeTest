@@ -1,7 +1,4 @@
-using Assets.Scripts.BoardGeneration;
 using Assets.Scripts.BoardGeneration.Tiles;
-using Assets.Scripts.Command;
-using Assets.Scripts.Quiz;
 using DG.Tweening;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,66 +9,51 @@ namespace Assets.Scripts.Player
     public sealed class PlayerView : MonoBehaviour
     {
         [SerializeField]
+        private float _moveCooldown = 1;
+        [SerializeField]
         private Animator _playerAnimator;
         [SerializeField]
         private ParticleSystem _particleSystem;
         [SerializeField]
         private Animator _floatingTextAnimator;
 
-        private IPlayerController _playerController;
-
-        private bool _isMoving;
         private int _playerCurrentPositionIndex;
         private int _playerTargetPositionIndex;
 
-        private float _moveCooldown = 1;
         private List<ITile> _tiles;
 
-        private IPlayerState _playerState;
-        private ICommandDispatcher _commandDispatcher;
+        private IPlayerViewModel _playerViewModel;
 
         [Inject]
-        private void Constructor(
-            IPlayerState playerState,
-            IBoardModel boardModel,
-            IPlayerController playerController,
-            ICommandDispatcher commandDispatcher)
+        private void Constructor(IPlayerViewModel playerViewModel)
         {
-            _playerState = playerState;
-            _tiles = boardModel.Tiles;
-            _playerController = playerController;
-            _commandDispatcher = commandDispatcher;
-            _playerController.OnPlayerMove += MovePlayer;
+            _playerViewModel = playerViewModel;
+            playerViewModel.OnPlayerMove += OnMovementStarted;
 
-            if (_tiles is null)
+            _tiles = _playerViewModel.Tiles;
+
+            if (_tiles is null || _tiles.Count == 0)
                 return;
 
-            transform.position = boardModel.Tiles[0].TileData.Position;
+            transform.position = _tiles[0].TileData.Position;
         }
 
-        private void MovePlayer(int steps)
+        private void OnMovementStarted(int steps)
         {
-            if (_playerState.IsMoving)
-                return;
-
             if (_tiles is null)
                 return;
 
-            _playerState.IsMoving = true;
+            _playerAnimator.speed = 1 / _moveCooldown;
             _playerTargetPositionIndex = _playerCurrentPositionIndex;
             _playerTargetPositionIndex += steps;
-            MovePlayerAsync();
+            MovePlayer();
         }
 
-        private void MovePlayerAsync()
+        private void MovePlayer()
         {
             if (_playerCurrentPositionIndex >= _playerTargetPositionIndex)
             {
-                _playerState.IsMoving = false;
-                if (_tiles[_playerCurrentPositionIndex] is QuizTile)
-                {
-                    _commandDispatcher.Execute(new ShowQuizCommand());
-                }
+                _playerViewModel.OnMovementEnded(_tiles[_playerCurrentPositionIndex] is QuizTile);
 
                 return;
             }
@@ -100,7 +82,7 @@ namespace Assets.Scripts.Player
                 _floatingTextAnimator.SetTrigger("Play");
             }
 
-            MovePlayerAsync();
+            MovePlayer();
         }
     }
 }

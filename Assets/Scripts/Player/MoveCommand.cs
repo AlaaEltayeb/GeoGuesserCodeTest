@@ -1,6 +1,4 @@
-using Assets.Scripts.BoardGeneration.Tiles;
 using Assets.Scripts.Command;
-using System.Collections.Generic;
 using VContainer;
 
 namespace Assets.Scripts.Player
@@ -8,8 +6,7 @@ namespace Assets.Scripts.Player
     public class MoveCommand : ICommand
     {
         private readonly int _steps;
-        private readonly List<ITile> _tiles;
-        private IPlayerController _playerController;
+        private IPlayerViewModel _playerViewModel;
 
         public MoveCommand(int steps)
         {
@@ -17,14 +14,14 @@ namespace Assets.Scripts.Player
         }
 
         [Inject]
-        private void Constructor(IPlayerController playerController)
+        private void Constructor(IPlayerViewModel playerViewModel)
         {
-            _playerController = playerController;
+            _playerViewModel = playerViewModel;
         }
 
         public void Execute()
         {
-            _playerController.MovePlayer(_steps);
+            _playerViewModel.MovePlayer(_steps);
         }
     }
 }
