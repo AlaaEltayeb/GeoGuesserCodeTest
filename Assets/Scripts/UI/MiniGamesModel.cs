@@ -1,26 +1,44 @@
 using Assets.Scripts.Quiz;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
 
 namespace Assets.Scripts.UI
 {
     public sealed class MiniGamesModel : IMiniGameModel
     {
-        public List<QuizData> FlagsQuizzes { get; set; }
-        public List<QuizData> TextQuizzes { get; set; }
+        private const string FlagsQuizName = "FlagQuizData";
+        private const string CitiesQuizName = "TextQuizData";
 
-        public void GenerateQuizzes(List<TextAsset> textAssets)
+        public List<QuizData> FlagsQuizzes { get; set; } = new();
+        public List<QuizData> TextQuizzes { get; set; } = new();
+
+        public MiniGamesModel()
         {
-            var quizzesData = new List<QuizData>();
-            foreach (var quizTextAsset in textAssets)
-            {
-                var quizData = JsonUtility.FromJson<QuizData>(quizTextAsset.ToString());
-                quizzesData.Add(quizData);
-            }
+            LoadQuizzes();
+        }
 
-            TextQuizzes = quizzesData.Where(quizData => quizData.QuestionType == (int)QuizType.Text).ToList();
-            FlagsQuizzes = quizzesData.Where(quizData => quizData.QuestionType == (int)QuizType.Flags).ToList();
+        private void LoadQuizzes()
+        {
+            Addressables
+                .LoadAssetAsync<TextAsset>(FlagsQuizName)
+                .Completed += OnFlagsTextAssetLoaded;
+            Addressables
+                .LoadAssetAsync<TextAsset>(CitiesQuizName)
+                .Completed += OnCitiesTextAssetLoaded;
+        }
+
+        private void OnCitiesTextAssetLoaded(AsyncOperationHandle<TextAsset> handle)
+        {
+            var data = JsonUtility.FromJson<QuizData>(handle.Result.text);
+            TextQuizzes.Add(data);
+        }
+
+        private void OnFlagsTextAssetLoaded(AsyncOperationHandle<TextAsset> handle)
+        {
+            var data = JsonUtility.FromJson<QuizData>(handle.Result.text);
+            FlagsQuizzes.Add(data);
         }
     }
 }
