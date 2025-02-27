@@ -833,7 +833,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 149851779}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.054122735, y: 0.9181111, z: -0.3687617, w: -0.13475013}
+  m_LocalRotation: {x: -0.054122716, y: 0.9181111, z: -0.36876166, w: -0.13475008}
   m_LocalPosition: {x: 0.6, y: 2, z: 2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -6339,7 +6339,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.054122735, y: 0.9181111, z: -0.3687617, w: -0.13475013}
+  m_LocalRotation: {x: -0.054122716, y: 0.9181111, z: -0.36876166, w: -0.13475008}
   m_LocalPosition: {x: 0.6, y: 2, z: 2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -6728,8 +6728,9 @@ GameObject:
   - component: {fileID: 403534406}
   - component: {fileID: 403534408}
   - component: {fileID: 403534407}
+  - component: {fileID: 403534409}
   m_Layer: 5
-  m_Name: Base_grp
+  m_Name: TopBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6798,6 +6799,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 403534405}
   m_CullTransparentMesh: 1
+--- !u!114 &403534409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 403534405}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4edb9051d6b4c948aa7c69e5a973484, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _scoreText: {fileID: 988321035}
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -14216,6 +14230,7 @@ MonoBehaviour:
   - {fileID: 1964602097}
   - {fileID: 273698133}
   - {fileID: 1255495060}
+  - {fileID: 403534405}
 --- !u!1 &1964602097 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5517808263013071344, guid: 3e7cb15866b2044c4821d261c3bfeeb2,
@@ -14243,7 +14258,6 @@ MonoBehaviour:
   _moveCooldown: 0.5
   _playerAnimator: {fileID: 773190234}
   _particleSystem: {fileID: 246927007}
-  _floatingTextAnimator: {fileID: 1255495062}
 --- !u!1 &1990987648
 GameObject:
   m_ObjectHideFlags: 0
