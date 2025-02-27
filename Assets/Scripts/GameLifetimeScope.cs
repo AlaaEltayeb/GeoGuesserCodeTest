@@ -27,7 +27,7 @@ namespace Assets.Scripts
             builder.Register<IPlayerState, PlayerState>(Lifetime.Singleton);
 
             builder.Register<IMiniGameModel, MiniGamesModel>(Lifetime.Singleton);
-            builder.Register<IMiniGameManager, MiniGameManager>(Lifetime.Singleton);
+            builder.Register<IMiniGameViewModel, MiniGameViewModel>(Lifetime.Singleton);
 
             builder.Register<IScoreModel, ScoreModel>(Lifetime.Singleton);
             builder.Register<IFloatingScoreViewModel, FloatingScoreViewModel>(Lifetime.Singleton);

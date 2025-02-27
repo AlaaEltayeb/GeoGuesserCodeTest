@@ -6,17 +6,17 @@ namespace Assets.Scripts.Quiz
 {
     public sealed class ShowQuizCommand : ICommand
     {
-        private IMiniGameManager _miniGameManager;
+        private IMiniGameViewModel _miniGameViewModel;
 
         [Inject]
-        private void Constructor(IMiniGameManager miniGameManager)
+        private void Constructor(IMiniGameViewModel miniGameViewModel)
         {
-            _miniGameManager = miniGameManager;
+            _miniGameViewModel = miniGameViewModel;
         }
 
         public void Execute()
         {
-            _miniGameManager.ShowMiniGame();
+            _miniGameViewModel.ShowMiniGame();
         }
     }
 }

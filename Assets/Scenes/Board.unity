@@ -274,7 +274,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &49409265
 RectTransform:
   m_ObjectHideFlags: 0
@@ -833,7 +833,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 149851779}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.054122716, y: 0.9181111, z: -0.36876166, w: -0.13475008}
+  m_LocalRotation: {x: -0.054122735, y: 0.9181111, z: -0.3687617, w: -0.13475013}
   m_LocalPosition: {x: 0.6, y: 2, z: 2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -6339,7 +6339,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.054122716, y: 0.9181111, z: -0.36876166, w: -0.13475008}
+  m_LocalRotation: {x: -0.054122735, y: 0.9181111, z: -0.3687617, w: -0.13475013}
   m_LocalPosition: {x: 0.6, y: 2, z: 2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -8492,7 +8492,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &922107429
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8980,7 +8980,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &982783921
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9076,13 +9076,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6e6a3726fb7ecc418bbf2e5d0c7453e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <Question>k__BackingField: {fileID: 398641679}
+  <QuizType>k__BackingField: 1
+  <Result>k__BackingField: {fileID: 277999528}
+  <Panel>k__BackingField: {fileID: 49409264}
   _flags:
   - {fileID: 1535803240}
   - {fileID: 1990987650}
   - {fileID: 1473270970}
   - {fileID: 1061689718}
-  _question: {fileID: 398641679}
-  _result: {fileID: 277999528}
 --- !u!1 &988321033
 GameObject:
   m_ObjectHideFlags: 0
@@ -11450,7 +11452,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1364674503
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11543,17 +11545,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 1364674502}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d449ae1125facfb4cac2ec2946b510f3, type: 3}
+  m_Script: {fileID: 11500000, guid: 48be40d393f48fa4cbaea98a3d9c028b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <Question>k__BackingField: {fileID: 2060842372}
+  <QuizType>k__BackingField: 0
+  <Result>k__BackingField: {fileID: 1211823901}
+  <Panel>k__BackingField: {fileID: 922107428}
   _answers:
   - {fileID: 1918112415}
   - {fileID: 554244898}
   - {fileID: 1550723445}
   - {fileID: 1541674934}
   _place: {fileID: 145416611}
-  _question: {fileID: 2060842372}
-  _result: {fileID: 1211823901}
 --- !u!1 &1399917564
 GameObject:
   m_ObjectHideFlags: 0
@@ -14228,9 +14232,11 @@ MonoBehaviour:
   - {fileID: 297407484}
   - {fileID: 1133933754}
   - {fileID: 1964602097}
-  - {fileID: 273698133}
   - {fileID: 1255495060}
   - {fileID: 403534405}
+  - {fileID: 273698133}
+  - {fileID: 1364674502}
+  - {fileID: 982783920}
 --- !u!1 &1964602097 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5517808263013071344, guid: 3e7cb15866b2044c4821d261c3bfeeb2,
@@ -14739,7 +14745,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 70
+  m_fontSize: 55.1
   m_fontSizeBase: 55.1
   m_fontWeight: 400
   m_enableAutoSizing: 1

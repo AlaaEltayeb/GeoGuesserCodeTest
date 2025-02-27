@@ -2,9 +2,10 @@ using System;
 
 namespace Assets.Scripts.MiniGame
 {
-    public interface IMiniGameManager
+    public interface IMiniGameViewModel
     {
         Action<int> OnShowMiniGame { get; set; }
+
         void ShowMiniGame();
     }
 }

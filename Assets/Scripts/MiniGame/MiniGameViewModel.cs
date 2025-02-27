@@ -4,7 +4,7 @@ using Random = UnityEngine.Random;
 
 namespace Assets.Scripts.MiniGame
 {
-    public sealed class MiniGameManager : IMiniGameManager
+    public sealed class MiniGameViewModel : IMiniGameViewModel
     {
         public Action<int> OnShowMiniGame { get; set; }
 
