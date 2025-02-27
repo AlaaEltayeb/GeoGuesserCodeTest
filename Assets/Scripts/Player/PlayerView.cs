@@ -14,8 +14,6 @@ namespace Assets.Scripts.Player
         private Animator _playerAnimator;
         [SerializeField]
         private ParticleSystem _particleSystem;
-        [SerializeField]
-        private Animator _floatingTextAnimator;
 
         private int _playerCurrentPositionIndex;
         private int _playerTargetPositionIndex;
@@ -79,7 +77,7 @@ namespace Assets.Scripts.Player
             if (_tiles[_playerCurrentPositionIndex] is EmptyTile)
             {
                 _particleSystem.Play();
-                _floatingTextAnimator.SetTrigger("Play");
+                _playerViewModel.OnStepCompleted();
             }
 
             MovePlayer();

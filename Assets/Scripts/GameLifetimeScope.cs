@@ -1,6 +1,7 @@
 using Assets.Scripts.BoardGeneration;
 using Assets.Scripts.Command;
 using Assets.Scripts.Player;
+using Assets.Scripts.Score;
 using Assets.Scripts.UI;
 using VContainer;
 using VContainer.Unity;
@@ -27,6 +28,9 @@ namespace Assets.Scripts
 
             builder.Register<IMiniGameModel, MiniGamesModel>(Lifetime.Singleton);
             builder.Register<IMiniGameManager, MiniGameManager>(Lifetime.Singleton);
+
+            builder.Register<IScoreModel, ScoreModel>(Lifetime.Singleton);
+            builder.Register<IFloatingScoreViewModel, FloatingScoreViewModel>(Lifetime.Singleton);
         }
     }
 }

@@ -2,6 +2,7 @@ using Assets.Scripts.BoardGeneration;
 using Assets.Scripts.BoardGeneration.Tiles;
 using Assets.Scripts.Command;
 using Assets.Scripts.Quiz;
+using Assets.Scripts.Score;
 using System;
 using System.Collections.Generic;
 
@@ -11,7 +12,7 @@ namespace Assets.Scripts.Player
     {
         private readonly IBoardModel _boardModel;
         private readonly IPlayerState _playerState;
-        private ICommandDispatcher _commandDispatcher;
+        private readonly ICommandDispatcher _commandDispatcher;
 
         public Action<int> OnPlayerMove { get; set; }
 
@@ -38,6 +39,11 @@ namespace Assets.Scripts.Player
 
             _playerState.IsMoving = true;
             OnPlayerMove?.Invoke(steps);
+        }
+
+        public void OnStepCompleted()
+        {
+            _commandDispatcher.Execute(new ShowFloatingScoreCommand());
         }
 
         public void OnMovementEnded(bool shouldShowQuiz)

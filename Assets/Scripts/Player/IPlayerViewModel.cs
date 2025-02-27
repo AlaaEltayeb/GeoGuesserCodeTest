@@ -10,6 +10,7 @@ namespace Assets.Scripts.Player
         Action<int> OnPlayerMove { get; set; }
 
         void MovePlayer(int steps);
+        void OnStepCompleted();
         void OnMovementEnded(bool shouldShowQuiz);
     }
 }
