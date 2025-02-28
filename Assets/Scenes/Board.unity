@@ -576,7 +576,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &113875343
 RectTransform:
   m_ObjectHideFlags: 0
@@ -718,7 +718,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 277999528}
+      - m_Target: {fileID: 113875342}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
@@ -984,7 +984,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 149851779}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.054122727, y: 0.9181111, z: -0.3687617, w: -0.13475013}
+  m_LocalRotation: {x: -0.054122735, y: 0.9181111, z: -0.3687617, w: -0.13475013}
   m_LocalPosition: {x: 0.6, y: 2, z: 2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -6263,7 +6263,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &277999529
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6364,6 +6364,7 @@ MonoBehaviour:
   <CorrectAnswerText>k__BackingField: {fileID: 1150207099}
   <ScoreText>k__BackingField: {fileID: 1615103320}
   <QuestionImage>k__BackingField: {fileID: 1222189164}
+  <Panel>k__BackingField: {fileID: 113875342}
 --- !u!1 &297407484
 GameObject:
   m_ObjectHideFlags: 0
@@ -6495,7 +6496,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.054122727, y: 0.9181111, z: -0.3687617, w: -0.13475013}
+  m_LocalRotation: {x: -0.054122735, y: 0.9181111, z: -0.3687617, w: -0.13475013}
   m_LocalPosition: {x: 0.6, y: 2, z: 2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -10679,7 +10680,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1211823902
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10780,6 +10781,7 @@ MonoBehaviour:
   <CorrectAnswerText>k__BackingField: {fileID: 1221422339}
   <ScoreText>k__BackingField: {fileID: 632378703}
   <QuestionImage>k__BackingField: {fileID: 1679909357}
+  <Panel>k__BackingField: {fileID: 1351971208}
 --- !u!1 &1221422338
 GameObject:
   m_ObjectHideFlags: 0
@@ -11698,7 +11700,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1351971209
 RectTransform:
   m_ObjectHideFlags: 0
@@ -14278,7 +14280,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1211823901}
+      - m_Target: {fileID: 1351971208}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6

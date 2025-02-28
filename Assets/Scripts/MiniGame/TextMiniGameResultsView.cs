@@ -21,6 +21,7 @@ namespace Assets.Scripts.MiniGame
         private void OnIconLoaded(AsyncOperationHandle<Sprite> handle)
         {
             QuestionImage.sprite = handle.Result;
+            Panel.SetActive(true);
             Addressables.Release(handle);
         }
     }

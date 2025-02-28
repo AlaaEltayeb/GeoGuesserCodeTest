@@ -40,7 +40,10 @@ namespace Assets.Scripts.MiniGame
                 Debug.Log("Good Job");
 
             Panel.SetActive(false);
-            CommandDispatcher.Execute(new ShowMiniGameResultCommand(Score, QuizData, CorrectAnswerIndex == answer));
+            CommandDispatcher.Execute(new ShowMiniGameResultCommand(
+                Score,
+                QuizData,
+                CorrectAnswerIndex == answer));
         }
     }
 }

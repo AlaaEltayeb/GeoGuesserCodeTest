@@ -25,6 +25,9 @@ namespace Assets.Scripts.MiniGame
         [field: SerializeField]
         protected Image QuestionImage { get; private set; }
 
+        [field: SerializeField]
+        protected GameObject Panel { get; private set; }
+
         public abstract void Populate(int score, QuizData quizData, bool succeeded);
     }
 }

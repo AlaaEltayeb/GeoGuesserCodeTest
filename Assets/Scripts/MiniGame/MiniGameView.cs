@@ -42,7 +42,6 @@ namespace Assets.Scripts.MiniGame
                 .FirstOrDefault(miniGame => (int)miniGame.QuizType == quizData.QuestionType);
 
             selectedMiniGameResult!.Populate(score, quizData, succeeded);
-            selectedMiniGameResult.gameObject.SetActive(true);
         }
     }
 }
