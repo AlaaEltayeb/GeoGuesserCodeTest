@@ -13,11 +13,14 @@ namespace Assets.Scripts.MiniGame
         [SerializeField]
         private List<GameObject> _miniGameResult;
 
+        private IMiniGameViewModel _miniGameViewModel;
+
         [Inject]
         private void Constructor(IMiniGameViewModel miniGameViewModel)
         {
-            miniGameViewModel.OnShowMiniGame += ShowSelectedMiniGame;
-            miniGameViewModel.OnShowMiniGameResult += ShowMiniGameResult;
+            _miniGameViewModel = miniGameViewModel;
+            _miniGameViewModel.OnShowMiniGame += ShowSelectedMiniGame;
+            _miniGameViewModel.OnShowMiniGameResult += ShowMiniGameResult;
         }
 
         private void ShowSelectedMiniGame(int selectedMiniGameType)
@@ -42,6 +45,15 @@ namespace Assets.Scripts.MiniGame
                 .FirstOrDefault(miniGame => (int)miniGame.QuizType == quizData.QuestionType);
 
             selectedMiniGameResult!.Populate(score, quizData, succeeded);
+        }
+
+        private void OnDestroy()
+        {
+            if (_miniGameViewModel == null)
+                return;
+
+            _miniGameViewModel.OnShowMiniGame -= ShowSelectedMiniGame;
+            _miniGameViewModel.OnShowMiniGameResult -= ShowMiniGameResult;
         }
     }
 }

@@ -1,4 +1,5 @@
 using Assets.Scripts.Command;
+using DG.Tweening;
 using UnityEngine.AddressableAssets;
 
 namespace Assets.Scripts.SceneLoading
@@ -14,6 +15,7 @@ namespace Assets.Scripts.SceneLoading
 
         public void Execute()
         {
+            DOTween.KillAll();
             Addressables.LoadSceneAsync(_sceneToLoad.ToString());
         }
     }

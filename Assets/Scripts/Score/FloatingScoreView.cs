@@ -11,14 +11,27 @@ namespace Assets.Scripts.Score
         [SerializeField]
         private TextMeshProUGUI _scoreText;
 
+        private IFloatingScoreViewModel _floatingScoreViewModel;
+
         [Inject]
         private void Constructor(IFloatingScoreViewModel floatingScoreViewModel)
         {
-            floatingScoreViewModel.OnFloatingScore += score =>
-            {
-                _scoreText.text = score.ToString();
-                _floatingTextAnimator.SetTrigger("Play");
-            };
+            _floatingScoreViewModel = floatingScoreViewModel;
+            _floatingScoreViewModel.OnFloatingScore += OnFloatingScore;
+        }
+
+        private void OnFloatingScore(int score)
+        {
+            _scoreText.text = score.ToString();
+            _floatingTextAnimator.SetTrigger("Play");
+        }
+
+        private void OnDestroy()
+        {
+            if (_floatingScoreViewModel == null)
+                return;
+
+            _floatingScoreViewModel.OnFloatingScore -= OnFloatingScore;
         }
     }
 }

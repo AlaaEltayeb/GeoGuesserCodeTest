@@ -41,5 +41,13 @@ namespace Assets.Scripts.MainMenu
                 quizTilesPercentage,
                 patternType);
         }
+
+        private void OnDestroy()
+        {
+            if (_startButton == null)
+                return;
+
+            _startButton.onClick.RemoveAllListeners();
+        }
     }
 }

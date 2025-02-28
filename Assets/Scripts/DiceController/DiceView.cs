@@ -25,5 +25,13 @@ namespace Assets.Scripts.DiceController
         {
             _rollDiceButton.onClick.AddListener(() => _diceViewModel.RollDice(_minDiceCount, _maxDiceCount));
         }
+
+        private void OnDestroy()
+        {
+            if (_rollDiceButton == null)
+                return;
+
+            _rollDiceButton.onClick.RemoveAllListeners();
+        }
     }
 }

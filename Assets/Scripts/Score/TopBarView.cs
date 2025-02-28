@@ -9,10 +9,26 @@ namespace Assets.Scripts.Score
         [SerializeField]
         private TextMeshProUGUI _scoreText;
 
+        private ITopBarViewModel _topBarViewModel;
+
         [Inject]
         private void Constructor(ITopBarViewModel topBarViewModel)
         {
-            topBarViewModel.OnScoreUpdated += score => { _scoreText.text = score.ToString(); };
+            _topBarViewModel = topBarViewModel;
+            _topBarViewModel.OnScoreUpdated += OnScoreUpdated;
+        }
+
+        private void OnScoreUpdated(int score)
+        {
+            _scoreText.text = score.ToString();
+        }
+
+        private void OnDestroy()
+        {
+            if (_topBarViewModel == null)
+                return;
+
+            _topBarViewModel.OnScoreUpdated -= OnScoreUpdated;
         }
     }
 }

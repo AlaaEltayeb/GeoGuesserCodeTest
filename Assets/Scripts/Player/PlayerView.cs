@@ -26,7 +26,6 @@ namespace Assets.Scripts.Player
         private void Constructor(IPlayerViewModel playerViewModel)
         {
             _playerViewModel = playerViewModel;
-            playerViewModel.OnPlayerMove += OnMovementStarted;
 
             _tiles = _playerViewModel.Tiles;
 
@@ -34,6 +33,11 @@ namespace Assets.Scripts.Player
                 return;
 
             transform.position = _tiles[0].TileData.Position;
+        }
+
+        private void Start()
+        {
+            _playerViewModel.OnPlayerMove += OnMovementStarted;
         }
 
         private void OnMovementStarted(int steps)
@@ -81,6 +85,14 @@ namespace Assets.Scripts.Player
             }
 
             MovePlayer();
+        }
+
+        private void OnDestroy()
+        {
+            if (_playerViewModel == null)
+                return;
+
+            _playerViewModel.OnPlayerMove -= OnMovementStarted;
         }
     }
 }
