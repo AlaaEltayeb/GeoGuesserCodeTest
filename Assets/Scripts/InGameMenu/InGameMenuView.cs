@@ -17,6 +17,7 @@ namespace Assets.Scripts.InGameMenu
 
         public void GoToMainMenu()
         {
+            _commandDispatcher.Execute(new ResetGameDataCommand());
             _commandDispatcher.Execute(new LoadSceneCommand(SceneType.MainMenu));
         }
     }

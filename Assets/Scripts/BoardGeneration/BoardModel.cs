@@ -29,7 +29,6 @@ namespace Assets.Scripts.BoardGeneration
         private void OnPrefabLoaded(AsyncOperationHandle<GameObject> handle)
         {
             TilePrefab = handle.Result;
-            Addressables.Release(handle);
         }
     }
 }

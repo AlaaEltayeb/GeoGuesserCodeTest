@@ -23,7 +23,8 @@ namespace Assets.Scripts.Score
         private void OnFloatingScore(int score)
         {
             _scoreText.text = score.ToString();
-            _floatingTextAnimator.SetTrigger("Play");
+            if (_floatingTextAnimator != null)
+                _floatingTextAnimator.SetTrigger("Play");
         }
 
         private void OnDestroy()

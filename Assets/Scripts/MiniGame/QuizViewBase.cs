@@ -36,9 +36,6 @@ namespace Assets.Scripts.MiniGame
 
         public virtual void SelectAnswer(int answer)
         {
-            if (CorrectAnswerIndex == answer)
-                Debug.Log("Good Job");
-
             Panel.SetActive(false);
             CommandDispatcher.Execute(new ShowMiniGameResultCommand(
                 Score,
